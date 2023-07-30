@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        header {
+            background-color: rgb(0, 0, 103);
+            color: white;
+            display: flex;
+            height: 90px;
+            font-size: large;
+            padding-left: 160px;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 10px;
+            align-items: center;
+        }
+        .form > * {
+            font-size: large;
+            margin: 5px 0;
+            width: 200px;
+        }
+        .form > input[type=text] {
+            text-align: center;
+        }
+        .button {
+            background-color: rgb(47, 155, 212); /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            filter: brightness(120%)
+        }
+        .errorButton {
+            filter: brightness(50%);
+        }
+        .resize {
+            width: 200px;
+            height: auto;
+        }
+        .center {
+            margin-left: 42%;
+            margin-top: 5px;
+        }
+        .worldItem {
+            font-size: 40px;
+            width: 100%;
+            text-align: center;
+        }
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gallow</h1>
+    </header>
+    <img src="images/0.png" alt="gallow" class="resize center">
+    <div id="worldItem" class="worldItem"></div>
+    <section id="section">
+    <div class="form">
+        <input type="text" size="1">
+        <button class="button" id="button">TRY</button>
+    </div>
+    </section>
+    <script src="WorldDatabase.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
