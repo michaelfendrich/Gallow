@@ -1,13 +1,13 @@
 'use strict';
 
-class WorldDatabase {
+class WordDatabase {
 
     constructor() {
         this.database = ['AUSCHWITZ', 'AUSTRALIA', 'ANTARKTIDA', 'MELBOURNE', 'SLOVAKIA', 'ANTANANARIVO', 'MISSISSIPPI',
-    'LUXEMBOURG', 'SOMALILAND', 'UNITED KINGDOM', 'CZECH REPUBLIC', 'REPUBLIC OF SOUTH AFRICA'];
+    'LUXEMBOURG', 'SOMALILAND', 'UNITED KINGDOM', 'CZECH REPUBLIC', 'REPUBLIC OF SOUTH AFRICA', 'ARGENTINA', 'PARAGUAY', 'INDONESIA'];
     }
 
-    getWorld() {
+    getWord() {
         return this.database[Math.floor(Math.random() * this.database.length)];
     }
 }

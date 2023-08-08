@@ -1,27 +1,27 @@
 let textField = document.querySelector("input[type=text]");
 let button = document.getElementById('button');
 let image = document.querySelector('img[alt=gallow]');
-let worldItem = document.getElementById('worldItem');
+let wordItem = document.getElementById('wordItem');
 let section = document.getElementById('section');
-button.addEventListener('click', check);
+button.addEventListener('click', isGuess);
 textField.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
-        check();
+        isGuess();
     }
 });
-const worldDatabase = new WorldDatabase();
-let world = worldDatabase.getWorld();
-let worldLines = '';
+const wordDatabase = new WordDatabase();
+let word = wordDatabase.getWord();
+let wordLines = '';
 let mistakes = 0;
-for (let i = 0; i < world.length; i++) {
-    if (world.charAt(i) == ' ') {
-        worldLines += ' ';
+for (let i = 0; i < word.length; i++) {
+    if (word.charAt(i) == ' ') {
+        wordLines += '-';
     } else {
-        worldLines += '_';
+        wordLines += '_';
     }
 }
-showWorld();
+showWord();
 textField.addEventListener('input', () => {
     let value = textField.value;
     textField.value = value.toUpperCase();
@@ -34,51 +34,57 @@ textField.addEventListener('input', () => {
     }
 });
 
+function isGuess() {
+    if (textField.value) {
+        check();
+    }
+}
+
 function check() {
     let result = '';
     let mistake = true;
-    for (let i = 0; i < world.length; i++) {
-        if (world.charAt(i) == textField.value) {
+    for (let i = 0; i < word.length; i++) {
+        if (word.charAt(i) == textField.value) {
             result += textField.value;
             mistake = false;
         } else {
-            result += worldLines.charAt(i);
+            result += wordLines.charAt(i);
         }
     }
     if (mistake) {
         mistakes++;
         image.src = 'images/' + mistakes + '.png';
     }
-    worldLines = result;
+    wordLines = result;
     textField.value = '';
-    showWorld();
+    showWord();
     isGameOver();
     congratulation();
 }
 
-function showWorld() {
+function showWord() {
     let result = '';
-    for (let i = 0; i < worldLines.length; i++) {
-        result += worldLines.charAt(i) +  '&nbsp&nbsp';
+    for (let i = 0; i < wordLines.length; i++) {
+        result += wordLines.charAt(i) +  ' ';
     }
-    worldItem.innerHTML = result;
+    wordItem.innerHTML = result;
 }
 
 function isGameOver() {
     if (mistakes == 11) {
         section.innerHTML = '';
         let info = document.createElement('div');
-        info.className = 'worldItem red';
+        info.className = 'wordItem red';
         info.innerHTML = '❌ GAME OVER';
         document.body.appendChild(info);
     }
 }
 
 function congratulation() {
-    if (!worldLines.includes('_')) {
+    if (!wordLines.includes('_')) {
         section.innerHTML = '';
         let info = document.createElement('div');
-        info.className = 'worldItem green';
+        info.className = 'wordItem green';
         info.innerHTML = '✅ CONGRATULATION';
         document.body.appendChild(info);
     }
